@@ -1,5 +1,5 @@
 # PIPELINE DEFINITION
-# Name: main
+# Name: pipeline
 # Inputs:
 #    TODO_must_update_secret_ds_pipeline_config_llm_rag: str [Default: '']
 #    load_from_repo: bool
@@ -417,7 +417,7 @@ deploymentSpec:
           \    vector_db.add_documents(all_splits)\n\n"
         image: quay.io/ecosystem-appeng/embeddingjob:0.0.5
 pipelineInfo:
-  name: main
+  name: pipeline
 root:
   dag:
     tasks:
@@ -480,34 +480,34 @@ platforms:
           - keyToEnv:
             - envVar: REPO_CONFIG
               secretKey: REPO_CONFIG
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret
         exec-load-data-from-s3:
           secretAsEnv:
           - keyToEnv:
             - envVar: S3_CONFIG
               secretKey: S3_CONFIG
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret
         exec-load-data-from-urls:
           secretAsEnv:
           - keyToEnv:
             - envVar: URLS_CONFIG
               secretKey: URLS_CONFIG
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret
         exec-split-and-embed:
           secretAsEnv:
           - keyToEnv:
             - envVar: DB_CONF
               secretKey: DB_CONF
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret
         exec-split-and-embed-2:
           secretAsEnv:
           - keyToEnv:
             - envVar: DB_CONF
               secretKey: DB_CONF
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret
         exec-split-and-embed-3:
           secretAsEnv:
           - keyToEnv:
             - envVar: DB_CONF
               secretKey: DB_CONF
-            secretName: ds-pipeline-config-llm-rag
+            secretName: populate-vectors-secret

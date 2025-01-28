@@ -3,7 +3,7 @@ from typing import List, Dict
 import os
 from kfp import kubernetes
 
-RAG_LLM_SECRET = "ds-pipeline-config-llm-rag"
+RAG_LLM_SECRET = "populate-vectors-secret"
 
 # S3 bucket
 @dsl.component(
